@@ -87,29 +87,31 @@ const Index = () => {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 pb-12">
-        <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="flex flex-col lg:flex-row gap-8 items-center justify-center max-w-6xl mx-auto">
           {/* Input Form */}
-          <div className="w-full lg:w-auto">
+          <div className="w-full lg:w-auto flex justify-center">
             <InputForm onGenerate={handleGenerate} isLoading={isLoading} />
           </div>
 
           {/* Results Section */}
-          <div className="w-full lg:flex-1 max-w-2xl">
-            {isLoading && <LoadingSpinner />}
-            {dietPlan && userData && !isLoading && (
-              <ResultCard dietPlan={dietPlan} userData={userData} />
-            )}
-            {!isLoading && !dietPlan && (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 mx-auto mb-4 bg-secondary rounded-full flex items-center justify-center">
-                  <Leaf className="w-8 h-8 text-primary" />
+          <div className="w-full lg:flex-1 max-w-2xl flex justify-center">
+            <div className="w-full">
+              {isLoading && <LoadingSpinner />}
+              {dietPlan && userData && !isLoading && (
+                <ResultCard dietPlan={dietPlan} userData={userData} />
+              )}
+              {!isLoading && !dietPlan && (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-secondary rounded-full flex items-center justify-center">
+                    <Leaf className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">Ready to Start?</h3>
+                  <p className="text-muted-foreground">
+                    Fill out the form to generate your personalized diet plan
+                  </p>
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">Ready to Start?</h3>
-                <p className="text-muted-foreground">
-                  Fill out the form to generate your personalized diet plan
-                </p>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
